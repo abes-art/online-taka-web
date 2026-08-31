@@ -1,280 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Taka - Demo Game</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Taka</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-    body {
-      margin: 0;
-      background: #f2f4f7;
-      color: #222;
-    }
+body {
+  margin: 0;
+  background: #f1f5f9;
+  color: #111827;
+}
 
-    header {
-      background: #111827;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+header {
+  background: #111827;
+  color: white;
+  text-align: center;
+  padding: 22px;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-    }
+header h1 {
+  margin: 0;
+}
 
-    header p {
-      margin: 6px 0 0;
-      color: #cbd5e1;
-    }
+.container {
+  max-width: 500px;
+  margin: auto;
+  padding: 18px;
+}
 
-    .container {
-      max-width: 500px;
-      margin: auto;
-      padding: 18px;
-    }
+.demo {
+  background: #fff3cd;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 15px;
+}
 
-    .demo {
-      background: #fff3cd;
-      color: #664d03;
-      padding: 12px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      text-align: center;
-      font-size: 14px;
-    }
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.08);
+}
 
-    .balance {
-      background: white;
-      border-radius: 16px;
-      padding: 25px;
-      text-align: center;
-      box-shadow: 0 3px 12px rgba(0,0,0,.08);
-      margin-bottom: 18px;
-    }
+.balance {
+  text-align: center;
+}
 
-    .balance h2 {
-      margin: 0;
-      font-size: 18px;
-      color: #64748b;
-    }
+.balance h2 {
+  color: #64748b;
+  font-size: 18px;
+}
 
-    #balance {
-      font-size: 38px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
+#balance {
+  font-size: 38px;
+  font-weight: bold;
+}
 
-    .buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
+input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 16px;
+  margin: 8px 0;
+}
 
-    button {
-      border: none;
-      border-radius: 12px;
-      padding: 15px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+}
 
-    .deposit {
-      background: #22c55e;
-      color: white;
-    }
+.deposit {
+  background: #22c55e;
+  color: white;
+}
 
-    .withdraw {
-      background: #ef4444;
-      color: white;
-    }
+.withdraw {
+  background: #ef4444;
+  color: white;
+}
 
-    .game {
-      background: white;
-      padding: 20px;
-      border-radius: 16px;
-      text-align: center;
-      box-shadow: 0 3px 12px rgba(0,0,0,.08);
-      margin-bottom: 20px;
-    }
+.play {
+  background: #2563eb;
+  color: white;
+}
 
-    .game h2 {
-      margin-top: 0;
-    }
+#result {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 15px;
+  min-height: 25px;
+}
 
-    .play {
-      background: #2563eb;
-      color: white;
-      width: 100%;
-      margin-top: 10px;
-    }
+li {
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
 
-    #result {
-      min-height: 25px;
-      margin-top: 15px;
-      font-weight: bold;
-    }
+.win {
+  color: #16a34a;
+}
 
-    .history {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 3px 12px rgba(0,0,0,.08);
-    }
+.loss {
+  color: #dc2626;
+}
 
-    .history h2 {
-      margin-top: 0;
-    }
-
-    #transactions {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-
-    #transactions li {
-      padding: 12px 0;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .positive {
-      color: #16a34a;
-    }
-
-    .negative {
-      color: #dc2626;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #64748b;
-      font-size: 13px;
-    }
-  </style>
+footer {
+  text-align: center;
+  color: #64748b;
+  padding: 20px;
+  font-size: 13px;
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>💰 Online Taka</h1>
-    <p>Fake Money Game</p>
-  </header>
+<header>
+  <h1>💰 Online Taka</h1>
+  <p>Virtual Money Game</p>
+</header>
 
-  <div class="container">
+<div class="container">
 
-    <div class="demo">
-      ⚠️ DEMO GAME — No real money or payments are used.
-    </div>
-
-    <div class="balance">
-      <h2>Your Balance</h2>
-      <div id="balance">1000 Taka</div>
-    </div>
-
-    <div class="buttons">
-      <button class="deposit" onclick="deposit()">➕ Deposit</button>
-      <button class="withdraw" onclick="withdraw()">➖ Withdraw</button>
-    </div>
-
-    <div class="game">
-      <h2>🎮 Lucky Taka Game</h2>
-      <p>Pay 50 fake Taka to play.</p>
-      <p>If you win, you get 100 fake Taka!</p>
-
-      <button class="play" onclick="playGame()">🎲 Play Game</button>
-
-      <div id="result"></div>
-    </div>
-
-    <div class="history">
-      <h2>📜 Transactions</h2>
-      <ul id="transactions">
-        <li class="positive">+1000 Taka — Starting balance</li>
-      </ul>
-    </div>
-
+  <div class="demo">
+    ⚠️ DEMO — All Taka in this game is virtual. No real money is used.
   </div>
 
-  <footer>
-    Online Taka © 2026 — Demo Game
-  </footer>
+  <div class="card balance">
+    <h2>Your Balance</h2>
+    <div id="balance">1000 Taka</div>
+  </div>
 
-  <script>
-    let balance = 1000;
+  <div class="card">
+    <h2>💰 Virtual Wallet</h2>
 
-    function updateBalance() {
-      document.getElementById("balance").textContent =
-        balance + " Taka";
-    }
+    <button class="deposit" onclick="deposit()">
+      ➕ Deposit 100 Taka
+    </button>
 
-    function addTransaction(text, positive) {
-      const list = document.getElementById("transactions");
-      const item = document.createElement("li");
+    <button class="withdraw" onclick="withdraw()">
+      ➖ Withdraw 100 Taka
+    </button>
+  </div>
 
-      item.textContent = text;
-      item.className = positive ? "positive" : "negative";
+  <div class="card">
+    <h2>🎮 Lucky Taka</h2>
 
-      list.insertBefore(item, list.firstChild);
-    }
+    <p>Choose how much virtual Taka you want to bet.</p>
 
-    function deposit() {
-      balance += 100;
+    <input
+      type="number"
+      id="bet"
+      placeholder="Enter bet amount"
+      min="10"
+    >
 
-      updateBalance();
-      addTransaction("+100 Taka — Fake deposit", true);
-    }
+    <button class="play" onclick="playGame()">
+      🎲 Play
+    </button>
 
-    function withdraw() {
-      if (balance < 100) {
-        alert("Not enough fake Taka!");
-        return;
-      }
+    <div id="result"></div>
+  </div>
 
-      balance -= 100;
+  <div class="card">
+    <h2>📜 Transactions</h2>
 
-      updateBalance();
-      addTransaction("-100 Taka — Fake withdrawal", false);
-    }
+    <ul id="transactions">
+      <li class="win">+1000 Taka — Starting balance</li>
+    </ul>
+  </div>
 
-    function playGame() {
-      if (balance < 50) {
-        document.getElementById("result").textContent =
-          "❌ You need 50 fake Taka to play.";
-        return;
-      }
+</div>
 
-      balance -= 50;
+<footer>
+  Online Taka © 2026 — Virtual Demo
+</footer>
 
-      const win = Math.random() < 0.5;
+<script>
 
-      if (win) {
-        balance += 100;
+let balance = 1000;
 
-        document.getElementById("result").textContent =
-          "🎉 YOU WON 100 Taka!";
+function updateBalance() {
+  document.getElementById("balance").textContent =
+    balance + " Taka";
+}
 
-        addTransaction("+100 Taka — Game win", true);
-      } else {
-        document.getElementById("result").textContent =
-          "😢 You lost 50 Taka.";
+function addTransaction(text, type) {
 
-        addTransaction("-50 Taka — Game loss", false);
-      }
+  const list = document.getElementById("transactions");
 
-      updateBalance();
-    }
+  const item = document.createElement("li");
 
-    updateBalance();
-  </script>
+  item.textContent = text;
+
+  item.className = type;
+
+  list.insertBefore(item, list.firstChild);
+}
+
+function deposit() {
+
+  balance += 100;
+
+  updateBalance();
+
+  addTransaction(
+    "+100 Taka — Virtual deposit",
+    "win"
+  );
+}
+
+function withdraw() {
+
+  if (balance < 100) {
+
+    alert("Not enough virtual Taka!");
+
+    return;
+  }
+
+  balance -= 100;
+
+  updateBalance();
+
+  addTransaction(
+    "-100 Taka — Virtual withdrawal",
+    "loss"
+  );
+}
+
+function playGame() {
+
+  const betInput =
+    document.getElementById("bet");
+
+  const bet =
+    Number(betInput.value);
+
+  const result =
+    document.getElementById("result");
+
+  if (!bet || bet < 10) {
+
+    result.textContent =
+      "❌ Minimum bet is 10 virtual Taka.";
+
+    return;
+  }
+
+  if (bet > balance) {
+
+    result.textContent =
+      "❌ You don't have enough virtual Taka.";
+
+    return;
+  }
+
+  balance -= bet;
+
+  const win =
+    Math.random() < 0.5;
+
+  if (win) {
+
+    const winnings = bet * 2;
+
+    balance += winnings;
+
+    result.textContent =
+      "🎉 You won " +
+      winnings +
+      " virtual Taka!";
+
+    addTransaction(
+      "+" + winnings +
+      " Taka — Game win",
+      "win"
+    );
+
+  } else {
+
+    result.textContent =
+      "😢 You lost " +
+      bet +
+      " virtual Taka.";
+
+    addTransaction(
+      "-" + bet +
+      " Taka — Game loss",
+      "loss"
+    );
+  }
+
+  updateBalance();
+
+  betInput.value = "";
+}
+
+updateBalance();
+
+</script>
 
 </body>
 </html>
+      
