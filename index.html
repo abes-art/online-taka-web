@@ -1,69 +1,280 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Security Training Simulation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Taka - Demo Game</title>
+
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       font-family: Arial, sans-serif;
-      background: #f8f9fa;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
     }
-    .box {
-      background: white;
-      width: 350px;
-      padding: 30px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
+
+    body {
+      margin: 0;
+      background: #f2f4f7;
+      color: #222;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 20px;
       text-align: center;
     }
-    input {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      box-sizing: border-box;
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
     }
-    button {
-      width: 100%;
+
+    header p {
+      margin: 6px 0 0;
+      color: #cbd5e1;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      padding: 18px;
+    }
+
+    .demo {
+      background: #fff3cd;
+      color: #664d03;
       padding: 12px;
-      background: #4285f4;
-      color: white;
-      border: 0;
-      border-radius: 5px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .balance {
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+      margin-bottom: 18px;
+    }
+
+    .balance h2 {
+      margin: 0;
+      font-size: 18px;
+      color: #64748b;
+    }
+
+    #balance {
+      font-size: 38px;
+      font-weight: bold;
       margin-top: 10px;
     }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      border: none;
+      border-radius: 12px;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .deposit {
+      background: #22c55e;
+      color: white;
+    }
+
+    .withdraw {
+      background: #ef4444;
+      color: white;
+    }
+
+    .game {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+      margin-bottom: 20px;
+    }
+
+    .game h2 {
+      margin-top: 0;
+    }
+
+    .play {
+      background: #2563eb;
+      color: white;
+      width: 100%;
+      margin-top: 10px;
+    }
+
     #result {
-      display: none;
-      margin-top: 20px;
-      color: #188038;
+      min-height: 25px;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .history {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    }
+
+    .history h2 {
+      margin-top: 0;
+    }
+
+    #transactions {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    #transactions li {
+      padding: 12px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .positive {
+      color: #16a34a;
+    }
+
+    .negative {
+      color: #dc2626;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #64748b;
+      font-size: 13px;
     }
   </style>
 </head>
+
 <body>
 
-<div class="box">
-  <h2>Security Training</h2>
-  <p>Training login simulation</p>
+  <header>
+    <h1>💰 Online Taka</h1>
+    <p>Fake Money Game</p>
+  </header>
 
-  <input type="email" placeholder="Email">
-  <input type="password" placeholder="Password">
+  <div class="container">
 
-  <button type="button" onclick="trainingComplete()">Sign in</button>
+    <div class="demo">
+      ⚠️ DEMO GAME — No real money or payments are used.
+    </div>
 
-  <div id="result">
-    <b>Training simulation complete.</b><br>
-    No credentials were collected or saved.
+    <div class="balance">
+      <h2>Your Balance</h2>
+      <div id="balance">1000 Taka</div>
+    </div>
+
+    <div class="buttons">
+      <button class="deposit" onclick="deposit()">➕ Deposit</button>
+      <button class="withdraw" onclick="withdraw()">➖ Withdraw</button>
+    </div>
+
+    <div class="game">
+      <h2>🎮 Lucky Taka Game</h2>
+      <p>Pay 50 fake Taka to play.</p>
+      <p>If you win, you get 100 fake Taka!</p>
+
+      <button class="play" onclick="playGame()">🎲 Play Game</button>
+
+      <div id="result"></div>
+    </div>
+
+    <div class="history">
+      <h2>📜 Transactions</h2>
+      <ul id="transactions">
+        <li class="positive">+1000 Taka — Starting balance</li>
+      </ul>
+    </div>
+
   </div>
-</div>
 
-<script>
-function trainingComplete() {
-  document.getElementById("result").style.display = "block";
-}
-</script>
+  <footer>
+    Online Taka © 2026 — Demo Game
+  </footer>
+
+  <script>
+    let balance = 1000;
+
+    function updateBalance() {
+      document.getElementById("balance").textContent =
+        balance + " Taka";
+    }
+
+    function addTransaction(text, positive) {
+      const list = document.getElementById("transactions");
+      const item = document.createElement("li");
+
+      item.textContent = text;
+      item.className = positive ? "positive" : "negative";
+
+      list.insertBefore(item, list.firstChild);
+    }
+
+    function deposit() {
+      balance += 100;
+
+      updateBalance();
+      addTransaction("+100 Taka — Fake deposit", true);
+    }
+
+    function withdraw() {
+      if (balance < 100) {
+        alert("Not enough fake Taka!");
+        return;
+      }
+
+      balance -= 100;
+
+      updateBalance();
+      addTransaction("-100 Taka — Fake withdrawal", false);
+    }
+
+    function playGame() {
+      if (balance < 50) {
+        document.getElementById("result").textContent =
+          "❌ You need 50 fake Taka to play.";
+        return;
+      }
+
+      balance -= 50;
+
+      const win = Math.random() < 0.5;
+
+      if (win) {
+        balance += 100;
+
+        document.getElementById("result").textContent =
+          "🎉 YOU WON 100 Taka!";
+
+        addTransaction("+100 Taka — Game win", true);
+      } else {
+        document.getElementById("result").textContent =
+          "😢 You lost 50 Taka.";
+
+        addTransaction("-50 Taka — Game loss", false);
+      }
+
+      updateBalance();
+    }
+
+    updateBalance();
+  </script>
 
 </body>
 </html>
